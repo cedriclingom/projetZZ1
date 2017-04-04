@@ -2,7 +2,9 @@
 /*                                                                                                      */
 /*                                              matrice.c                                               */
 /*                                                                                                      */
-/* Role  :                                                                                              */
+/* Role  :        Le fichier matrice.c contient les définitions liés au traitement à effectuer sur une  */
+/*                matrice.                                                                              */
+/*                                                                                                      */
 /*------------------------------------------------------------------------------------------------------*/
 
 
@@ -28,11 +30,11 @@
 /*                                                                                                      */
 /* AllocationMatrice           Alloue une matrice d'un certain nombre de lignes et colonnes.            */
 /*                                                                                                      */
-/* En entrée             :     matrice   - Pointeur de pointeur de pointeur sur un nombre.              */
-/*                             NbLigne   - Le nombre de ligne de la matrice.                            */
-/*                             NbColonne - Le nombre de colonne de la matrice.                          */
+/* En entrée             :     matrice    - Pointeur de pointeur de pointeur sur un nombre.             */
+/*                             NbLigne    - Le nombre de ligne de la matrice.                           */
+/*                             NbColonne  - Le nombre de colonne de la matrice.                         */
 /*                                                                                                      */
-/* En sortie             :     matrice   - Pointeur de pointeur de pointeur sur un nombre.              */
+/* En sortie             :     pmatrice   - Pointeur de pointeur de pointeur sur un nombre.             */
 /*                                                                                                      */
 /* Variable(s) locale(s) :     i         - Variable de boucle.                                          */
 /*                             j         - Variable de boucle.                                          */
@@ -40,34 +42,34 @@
 /*------------------------------------------------------------------------------------------------------*/
 
 
-void AllocationMatrice(nombre_t *** matrice,int NbLigne, int NbColonne)
+void AllocationMatrice(nombre_t *** pmatrice,int NbLigne, int NbColonne)
 {
   
   int i, j;
 
-  (*matrice) = (nombre_t **)malloc(NbLigne * sizeof(nombre_t *));
+  (*pmatrice) = (nombre_t **)malloc(NbLigne * sizeof(nombre_t *));
 
-  if(*matrice)
+  if(*pmatrice)                                                               /*si l'allocation des lignes à marcher*/
     {
       
       for(i = 0; i < NbLigne; ++i)
 	{
 
-	  (*matrice)[i] = (nombre_t *)malloc(NbColonne * sizeof(nombre_t));
+	  (*pmatrice)[i] = (nombre_t *)malloc(NbColonne * sizeof(nombre_t));  /*alloue les colonnes de chaque ligne*/
 	  
-	  if(!(*matrice)[i])
+	  if(!(*pmatrice)[i])                                                 /*si l'allocation n'a pas marcher*/
 	    {
 
 	      for(j = 0; j < i; ++j)
 		{
 
-		  free((*matrice)[j]);
+		  free((*pmatrice)[j]);                                      
 
 		}
 
-	      free(*matrice);
+	      free(*pmatrice);
 
-	      *matrice = NULL;
+	      *pmatrice = NULL;
 
 	      i = NbLigne;
 
@@ -78,7 +80,121 @@ void AllocationMatrice(nombre_t *** matrice,int NbLigne, int NbColonne)
     }
 
 }
-/*lecture1 matrice*/
+
+
+
+
+
+void SeparateurLigne(int NumeroLigne, int LongueurLigne)
+{
+
+  int i;
+  
+  printf("/");
+
+  for(i = 0; i < LongueurLigne; ++i)
+    {
+
+      printf("*");
+
+      if(i == ((LongueurLigne / 2) -1))
+	{
+	  
+	  printf("LIGNE %d", NumeroLigne);
+
+	}
+
+    }
+
+  printf("/\n");
+
+}
+  
+/*void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
+{
+
+  int i, j;
+
+  for(i = 0; i < NbLigne; ++i)
+    {
+
+      printf("
+*/
+
+
+
+
 /*lecture2 matrice*/
-/*affiche matrice*/
-/*desallocation matrice*/
+
+
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* AfficherMatrice           Affiche le contenu de la matrce.                                           */
+/*                                                                                                      */
+/* En entrée             :   matrice   - Pointeur de pointeur sur un nombre.                            */
+/*                           NbLigne   - Le nombre de lignes de la matrice.                             */
+/*                           NbColonne - Le nombre de colonnes de la matrice.                           */ 
+/*                                                                                                      */
+/* En sortie             :   Rien en sortie.                                                            */
+/*                                                                                                      */
+/* Variable(s) locale(s) :   i         - Variable de boucle.                                            */
+/*                           j         - Variable de boucle.                                            */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
+void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
+{
+
+  int i, j;
+  
+  for(i = 0; i < NbLigne; ++i)
+    {
+
+      printf("| ");
+
+      for(j = 0; j < NbColonne; ++j)
+	{
+	  
+	  printf("%d ", matrice[i][j]);
+
+	}
+
+      printf("|\n");
+
+    }
+
+}
+
+
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* LiberationMatrice            Désalloue toute la matrice.                                             */
+/*                                                                                                      */
+/* En entrée             :      pmatrice - Pointeur de pointeur de pointeur sur un nombre.              */
+/*                              NbLigne  - Le nombre de lignes de la matrice.                           */
+/*                                                                                                      */    
+/* En sortie             :      Rien en sortie.                                                         */
+/*                                                                                                      */
+/* Variable(s) locale(s) :      i        - Variable de boucle.                                          */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
+void LiberationMatrice(nombre_t *** pmatrice, int NbLigne)
+{
+
+  int i;
+
+  for(i = 0; i < NbLigne; ++i)
+    {
+
+      free((*pmatrice)[i]);
+
+    }
+
+  free(*pmatrice);
+
+  *pmatrice = NULL;
+
+}

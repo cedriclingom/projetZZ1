@@ -4,6 +4,19 @@
 
 
 
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+
+
+
+
+
+
 typedef union
 {
 
@@ -23,6 +36,11 @@ typedef union
 
 void AllocationMatrice(nombre_t ***, int, int);
 
+void SeparateurLigne(int, int);
+
+void AfficherMatrice(nombre_t **, int, int);
+
+void LiberationMatrice(nombre_t ***, int);
 
 
 

@@ -4,7 +4,7 @@ CC = gcc
 
 
 #Les options
-CFLAGS = -ansi -pendantic -Wall -Wextra -g -O2
+CFLAGS = -ansi -pedantic -Wall -Wextra -g -O2
 LDFALGS = -lm 
 
 
@@ -15,7 +15,7 @@ EXEC = main
 
 #Liste des fichiers objets
 SRC = $(wildcard *.c)
-OBJ = $(SRC: .c = .0)
+OBJ = $(SRC:.c=.o)
 
 
 
@@ -34,18 +34,18 @@ main: $(OBJ)
 
 #Règle de production des fichiers objets
 %.o: %.c
-	$(CC) -c $@ $< $(CFLAGS)
+	$(CC) -c $< $(CFLAGS)
 
 
 
 #Règle de nettoyage
 
-.PHONY: clean mrproper
+.PHONY: clean mrpropre
 
 
 clean:
 	rm $(OBJ)
 
-mrproper: clean
+mrpropre: clean
 	rm $(EXEC)
 

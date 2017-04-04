@@ -85,6 +85,22 @@ void AllocationMatrice(nombre_t *** pmatrice,int NbLigne, int NbColonne)
 
 
 
+
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* SeparateurLigne            Sépare chaque ligne de la matrice lors de la saisie des valeurs.          */
+/*                                                                                                      */
+/* En entrée             :    NumeroLigne   - Numéro de ligne de la matrice.                            */
+/*                                                                                                      */
+/* En sortie             :    LongueurLigne - Longueur de la ligne servant de séparateur en ligne de    */
+/*                                            commande.                                                 */
+/*                                                                                                      */
+/* Variable(s) locale(s) :    i             - Variable de boucle.                                       */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
+
 void SeparateurLigne(int NumeroLigne, int LongueurLigne)
 {
 
@@ -110,21 +126,52 @@ void SeparateurLigne(int NumeroLigne, int LongueurLigne)
 
 }
   
-/*void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
+
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* LireMatrice              Permet d'entrer les données dans la matrice à partir de l'entrée standard.  */
+/*                                                                                                      */
+/* En entrée             :  matrice   - Pointeur de pointeur sur un nombre.                             */
+/*                          NbLigne   - Le nombre de ligne de la matrice.                               */
+/*                          NbColonne - Le nombre de colonne de la matrice.                             */
+/*                                                                                                      */
+/* En sortie             :  matrice   - Pointeur de pointeur sur un nombre.                             */                                  /*                                                                                                      */
+/* Variable(s) locale(s) :  i , j     - Variables de boucle.                                            */
+/*                          continu   - Variable contenant une valeur signifiant la lecture c'est bien  */
+/*                                      passée ou pas.                                                  */  
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
+void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 {
 
-  int i, j;
+  int i, j, continu = 1;
 
-  for(i = 0; i < NbLigne; ++i)
+  for(i = 0; (i < NbLigne && continu); ++i)
     {
 
-      printf("
-*/
+      SeparateurLigne(i+1, 100);
+
+      for(j = 0; (j < NbColonne && continu) ; ++j)
+	{
+
+	  printf("Entrez l'élément %d: ", j + 1);
+
+	  continu = scanf("%d", matrice[i] + j);
+
+	}
+
+    }
+
+}
 
 
 
 
-/*lecture2 matrice*/
+
+/*void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColone, FILE * f)*/
+
 
 
 /*------------------------------------------------------------------------------------------------------*/

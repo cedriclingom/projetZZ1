@@ -17,14 +17,7 @@
 
 
 
-typedef union
-{
-
-  int ValEntier;
-
-  float ValReel;
-
-}nombre_t;
+typedef int nombre_t;
 
 
 
@@ -37,6 +30,8 @@ typedef union
 void AllocationMatrice(nombre_t ***, int, int);
 
 void SeparateurLigne(int, int);
+
+void LireMatrice(nombre_t **, int, int);
 
 void AfficherMatrice(nombre_t **, int, int);
 

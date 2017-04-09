@@ -168,9 +168,46 @@ void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 
 
 
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* FlireMatrice            Lecture de données pour une matrice à partir d'un fichier.                   */
+/*                                                                                                      */
+/* En entrée             : matrice     - Pointeur de pointeur sur un nombre.                            */
+/*                         NbLigne     - Nombre de ligne de la matrice.                                 */
+/*                         NbColonne   - Nombre de colonne de la matrice.                               */
+/*                         f           - Pointeur de fichier.                                           */
+/*                         CodeLecture - Pointeur sur la case mémoire contenant une valeur comme quoi   */
+/*                                       la lecture c'est bien passé ou pas.                            */
+/*                                                                                                      */
+/* En sortie             : matrice     - Pointeur de pointeur sur un nombre.                            */
+/*                         CodeLecture - Pointeur sur la case mémoire contenant une valeur comme quoi   */
+/*                                       la lecture c'est bien passé ou pas.                            */
+/*                                                                                                      */
+/* Variable(s) locale(s) : i, j        - Variables de boucle.                                           */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
 
 
-/*void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColone, FILE * f)*/
+void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne, FILE * f, int * CodeLecture)
+{
+
+  int i, j;
+
+  *CodeLecture = 1;
+
+  for(i = 0; (i < NbLigne && *CodeLecture); ++i)           /*tantque je suis dans la matrice et que la lecture ce passe bien*/
+    {
+
+      for(j = 0; (j < NbColonne && *CodeLecture); ++j)
+	{
+
+	  *CodeLecture = fscanf(f, "%d", matrice[i] + j);
+
+	}
+
+    }
+
+}
 
 
 

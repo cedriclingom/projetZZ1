@@ -33,6 +33,8 @@ void SeparateurLigne(int, int);
 
 void LireMatrice(nombre_t **, int, int);
 
+void FlireMatrice(nombre_t **, int, int, FILE *, int *);
+
 void AfficherMatrice(nombre_t **, int, int);
 
 void LiberationMatrice(nombre_t ***, int);

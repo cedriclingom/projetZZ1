@@ -5,6 +5,29 @@
 
 
 
+#include "./matrice.h"
+
+
+
+
+
+
+typedef struct grille
+{
+
+  nombre_t * SommetEntrepot;
+
+  nombre_t * arrete;
+
+  nombre_t * PointArret;
+
+}grille_t;
+
+
+
+
+
+
 
 
 

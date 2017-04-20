@@ -28,27 +28,26 @@ nombre_t ** creationEntrepot(FILE * f, nombre_t * nb)
 
 nombre_t ** creationArrete(FILE * f, nombre_t * nb)
 {
-	int * CodeLecture;
+  
+  int i,j;
+
+  int CodeLecture;
+  
+  int ** matrice =  AllocationMatrice(*nb, NBCOL);
 	
-	int ** matrice = NULL;
+  if(matrice)
+    {
+
+      fscanf(fichier,"%d",nb);
+      
+      FlireMatrice(matrice, *nb, NBCOL, f, &CodeLecture);
+      
+      AfficherMatrice(matrice, *nb, NBCOL);
 	
-	int i,j;
-	
-	fscanf(fichier,"%d",nb);
-	
-	matrice = AllocationMatrice(nb, NBCOL);
-	
-	if(matrice)
-		
-	{
-	
-		FlireMatrice(matrice, nb, NBCOL, f, CodeLecture);
-		
-		AfficherMatrice(matrice, nb, NBCOL)
-		
-	}
-		
-	return matrice;
+    }
+  
+  return matrice;
+
 }
 
 nombre_t ** creationPointArret(FILE * f, nombre_t * nb)

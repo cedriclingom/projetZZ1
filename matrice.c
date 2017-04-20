@@ -232,6 +232,8 @@ void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 {
 
   int i, j;
+
+  printf(" Le contenu de la matrice est:\n");
   
   for(i = 0; i < NbLigne; ++i)
     {

@@ -28,6 +28,8 @@
 
 nombre_t * AllocationTableau(int);
 
+void AfficherTableau(nombre_t *, int);
+
 
 
 

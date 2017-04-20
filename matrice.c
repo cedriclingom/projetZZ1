@@ -30,11 +30,10 @@
 /*                                                                                                      */
 /* AllocationMatrice           Alloue une matrice d'un certain nombre de lignes et colonnes.            */
 /*                                                                                                      */
-/* En entrée             :     matrice    - Pointeur de pointeur de pointeur sur un nombre.             */
-/*                             NbLigne    - Le nombre de ligne de la matrice.                           */
+/* En entrée             :     NbLigne    - Le nombre de ligne de la matrice.                           */
 /*                             NbColonne  - Le nombre de colonne de la matrice.                         */
 /*                                                                                                      */
-/* En sortie             :     pmatrice   - Pointeur de pointeur de pointeur sur un nombre.             */
+/* En sortie             :     matrice   - Pointeur de pointeur sur un nombre.                         */
 /*                                                                                                      */
 /* Variable(s) locale(s) :     i         - Variable de boucle.                                          */
 /*                             j         - Variable de boucle.                                          */
@@ -42,34 +41,34 @@
 /*------------------------------------------------------------------------------------------------------*/
 
 
-void AllocationMatrice(nombre_t *** pmatrice,int NbLigne, int NbColonne)
+nombre_t **  AllocationMatrice(int NbLigne, int NbColonne)
 {
   
   int i, j;
 
-  (*pmatrice) = (nombre_t **)malloc(NbLigne * sizeof(nombre_t *));
+  nombre_t ** matrice = (nombre_t **)malloc(NbLigne * sizeof(nombre_t *));
 
-  if(*pmatrice)                                                               /*si l'allocation des lignes à marcher*/
+  if(matrice)                                                               /*si l'allocation des lignes à marcher*/
     {
       
       for(i = 0; i < NbLigne; ++i)
 	{
 
-	  (*pmatrice)[i] = (nombre_t *)malloc(NbColonne * sizeof(nombre_t));  /*alloue les colonnes de chaque ligne*/
+	  matrice[i] = (nombre_t *)malloc(NbColonne * sizeof(nombre_t));  /*alloue les colonnes de chaque ligne*/
 	  
-	  if(!(*pmatrice)[i])                                                 /*si l'allocation n'a pas marcher*/
+	  if(!matrice[i])                                                 /*si l'allocation n'a pas marcher*/
 	    {
 
 	      for(j = 0; j < i; ++j)
 		{
 
-		  free((*pmatrice)[j]);                                      
+		  free(matrice[j]);                                      
 
 		}
 
-	      free(*pmatrice);
+	      free(matrice);
 
-	      *pmatrice = NULL;
+	      matrice = NULL;
 
 	      i = NbLigne;
 
@@ -78,6 +77,8 @@ void AllocationMatrice(nombre_t *** pmatrice,int NbLigne, int NbColonne)
 	}
 
     }
+  
+  return matrice;
 
 }
 

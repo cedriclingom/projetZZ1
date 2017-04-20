@@ -27,7 +27,7 @@ typedef int nombre_t;
 
 
 
-void AllocationMatrice(nombre_t ***, int, int);
+nombre_t ** AllocationMatrice(int, int);
 
 void SeparateurLigne(int, int);
 

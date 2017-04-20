@@ -1,2 +1,3 @@
 /*création d'une séquence par défaut*/
-/*Création de la meilleur séquence*/
+/*Déterminer la meilleur séquence*/
+/*Affiche la séquence*/

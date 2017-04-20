@@ -7,8 +7,7 @@
 
 
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "./tableau.h"
 
 
 
@@ -17,7 +16,6 @@
 
 
 
-typedef int nombre_t;
 
 
 

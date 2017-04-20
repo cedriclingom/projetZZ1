@@ -25,6 +25,10 @@
 
 
 
+typedef int nombre_t;
+
+
+
 
 nombre_t * AllocationTableau(int);
 

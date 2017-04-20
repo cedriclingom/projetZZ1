@@ -10,6 +10,11 @@
 
 
 
+#include "./tableau.h"
+
+
+
+
 
 
 

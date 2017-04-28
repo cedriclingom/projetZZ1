@@ -33,7 +33,7 @@ typedef struct grille
 
 nombre_t ** creationEntrepot(FILE *, nombre_t *);
 
-nombre_t ** creationArrete(FILE *, nombre_t);
+nombre_t ** creationArrete(FILE *, nombre_t *);
 
 nombre_t ** creationPointArret(FILE *, nombre_t *);
 

@@ -17,7 +17,6 @@
 
 
 
-
 /*------------------------------------------------------------------------------------------------------*/
 /* AllocationTableau            Alloue un tableau.                                                      */
 /*                                                                                                      */
@@ -35,6 +34,7 @@ nombre_t * AllocationTableau(int taille)
 {
 
   nombre_t * tab = (nombre_t *)malloc(taille * sizeof(nombre_t));
+  return tab;
 
 }
 

@@ -42,8 +42,13 @@ nombre_t ** CreationArrete(FILE *, int *, enum bool *);
 
 nombre_t ** CreationPointArret(FILE *, int *, enum bool *);
 
-void LectureFichier(char *, nombre_t **, nombre_t **, nombre_t **, int *, int *, int *,enum bool *);
+void LectureFichier(char *, nombre_t ***, nombre_t ***, nombre_t ***, int *, int *, int *,enum bool *);
 
+nombre_t * CreationListe(nombre_t **, int);
+
+grille_t * CreationGrille(nombre_t **, nombre_t **, nombre_t **, int, int, int, enum bool *);
+
+void LibererGrille(grille_t **);
 
 
 

@@ -34,6 +34,7 @@ nombre_t * AllocationTableau(int taille)
 {
 
   nombre_t * tab = (nombre_t *)malloc(taille * sizeof(nombre_t));
+
   return tab;
 
 }
@@ -64,10 +65,10 @@ void AfficherTableau(nombre_t * tab, int taille)
   for(i = 0; i < taille - 1; ++i)
     {
 
-      printf("%d, ", tab[i]);
+      printf("%d, ", tab[i].entier);
 
     }
 
-  printf("%d ]\n", tab[i]);
+  printf("%d ]\n", tab[i].entier);
 
 }

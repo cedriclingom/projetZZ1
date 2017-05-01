@@ -159,7 +159,7 @@ void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 
 	  printf("Entrez l'élément %d: ", j + 1);
 
-	  continu = scanf("%d", matrice[i] + j);
+	  continu = scanf("%d", &((matrice[i] + j)->entier));
 
 	}
 
@@ -189,20 +189,33 @@ void LireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 /*------------------------------------------------------------------------------------------------------*/
 
 
-void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne, FILE * f, int * CodeLecture)
+void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne, FILE * f, enum bool * PcodeLecture)
 {
 
   int i, j;
 
-  *CodeLecture = 1;
+  *PcodeLecture = vrai;
 
-  for(i = 0; (i < NbLigne && *CodeLecture); ++i)           /*tantque je suis dans la matrice et que la lecture ce passe bien*/
+  for(i = 0; (i < NbLigne && *PcodeLecture); ++i)           /*tantque je suis dans la matrice et que la lecture ce passe bien*/
     {
 
-      for(j = 0; (j < NbColonne && *CodeLecture); ++j)
+      for(j = 0; (j < NbColonne && *PcodeLecture); ++j)
 	{
 
-	  *CodeLecture = fscanf(f, "%d", matrice[i] + j);
+	  *PcodeLecture = fscanf(f, "%d", &((matrice[i] + j)->entier));
+
+	  if(*PcodeLecture)
+	    {
+
+	      *PcodeLecture = vrai;
+
+	    }
+	  else
+	    {
+
+	      *PcodeLecture = faux;
+
+	    }
 
 	}
 
@@ -243,7 +256,7 @@ void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
       for(j = 0; j < NbColonne; ++j)
 	{
 	  
-	  printf("%d ", matrice[i][j]);
+	  printf("%d ", matrice[i][j].entier);
 
 	}
 

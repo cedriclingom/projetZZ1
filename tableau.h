@@ -25,7 +25,14 @@
 
 
 
-typedef int nombre_t;
+typedef union nombre
+{
+
+  int entier;
+
+  float reel;
+
+}nombre_t;
 
 
 

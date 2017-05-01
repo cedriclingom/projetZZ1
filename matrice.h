@@ -14,10 +14,7 @@
 
 
 
-
-
-
-
+enum bool{faux, vrai};
 
 
 
@@ -31,7 +28,7 @@ void SeparateurLigne(int, int);
 
 void LireMatrice(nombre_t **, int, int);
 
-void FlireMatrice(nombre_t **, int, int, FILE *, int *);
+void FlireMatrice(nombre_t **, int, int, FILE *, enum bool *);
 
 void AfficherMatrice(nombre_t **, int, int);
 

@@ -31,11 +31,19 @@ typedef struct grille
 }grille_t;
 
 
-nombre_t ** creationEntrepot(FILE *, nombre_t *);
 
-nombre_t ** creationArrete(FILE *, nombre_t *);
 
-nombre_t ** creationPointArret(FILE *, nombre_t *);
+
+
+
+nombre_t ** CreationEntrepot(FILE *, int *, enum bool *);
+
+nombre_t ** CreationArrete(FILE *, int *, enum bool *);
+
+nombre_t ** CreationPointArret(FILE *, int *, enum bool *);
+
+void LectureFichier(char *, nombre_t **, nombre_t **, nombre_t **, int *, int *, int *,enum bool *);
+
 
 
 

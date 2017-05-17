@@ -1,25 +1,24 @@
-#include "./matrice.h"
-#include "./grille.h"
+#include "./sequence.h"
 
 int main(int argc, char ** argv)
 {
-  int NbSommet, NbArretes, NbPointArret;
+  int NbSommet, NbArrete, NbPointArret;
   
   enum bool CodeLecture, CodeCreation;
 
   grille_t * pgrille = NULL;
   
-  nombre_t ** sommet = NULL, ** arrete = NULL, ** PointArret = NULL;
+  nombre_t ** sommet = NULL, ** arrete = NULL, ** PointArret = NULL, ** distance = NULL;
   
   if(argc == 2)
     {
   
-      LectureFichier(argv[1], &sommet, &arrete, &PointArret, &NbSommet, &NbArretes, &NbPointArret, &CodeLecture);
+      LectureFichier(argv[1], &sommet, &arrete, &PointArret, &NbSommet, &NbArrete, &NbPointArret, &CodeLecture);
 
       if(CodeLecture)
 	{
 
-	  pgrille = CreationGrille(sommet, arrete, PointArret, NbSommet, NbArretes, NbPointArret, &CodeCreation);
+	  pgrille = CreationGrille(sommet, arrete, PointArret, NbSommet, NbArrete, NbPointArret, &CodeCreation);
 
 	  if(CodeCreation)
 	    {
@@ -30,11 +29,15 @@ int main(int argc, char ** argv)
 
 	      printf("Les arretes!\n");
 
-	      AfficherTableau(pgrille->arrete, NbArretes);
+	      AfficherTableau(pgrille->arrete, NbArrete);
 
 	      printf("Les Points d'arrets!\n");
 
 	      AfficherTableau(pgrille->PointArret, NbPointArret);
+
+	      RemplirMatriceDistance(&distance, sommet, NbSommet, PointArret, NbPointArret, arrete, NbArrete);
+
+	      AfficherMatrice(distance, NbSommet + NbPointArret, NbSommet + NbPointArret);
 
 	      LibererGrille(&pgrille);
 
@@ -42,9 +45,11 @@ int main(int argc, char ** argv)
   
 	  LiberationMatrice(&sommet, NbSommet);
       
-	  LiberationMatrice(&arrete, NbArretes);
+	  LiberationMatrice(&arrete, NbArrete);
       
 	  LiberationMatrice(&PointArret, NbPointArret);
+
+	  LiberationMatrice(&distance, NbSommet + NbPointArret);
 
 	}
       else

@@ -5,7 +5,7 @@ CC = gcc
 
 #Les options
 CFLAGS = -ansi -pedantic -Wall -Wextra -g -O2
-LDFALGS = -lm 
+LDFLAGS = -lm 
 
 
 
@@ -34,7 +34,7 @@ main: $(OBJ)
 
 #Règle de production des fichiers objets
 %.o: %.c
-	$(CC) -c $< $(CFLAGS)
+	$(CC) -c $< $(CFLAGS) 
 
 
 

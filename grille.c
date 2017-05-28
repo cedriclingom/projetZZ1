@@ -283,7 +283,7 @@ nombre_t * CreationListe(nombre_t ** matrice, int taille)
       for(i = 0; i < taille; ++i)
 	{
 
-	  pliste[i] = matrice[i][0];
+	  pliste[i].entier = matrice[i][0].entier;
 
 	}
 

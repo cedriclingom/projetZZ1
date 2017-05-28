@@ -32,6 +32,8 @@ void FlireMatrice(nombre_t **, int, int, FILE *, enum bool *);
 
 void AfficherMatrice(nombre_t **, int, int);
 
+void AfficherMatrice2(nombre_t **, int, int);
+
 void LiberationMatrice(nombre_t ***, int);
 
 

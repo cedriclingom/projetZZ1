@@ -2,8 +2,7 @@
 
 
 /*alloaction matrice de distance*/
-nombre_t ** AllocationMatriceDistances(int NbSommet,int NbPointArret)
-
+nombre_t ** AllocationMatriceDistances(int NbSommet, int NbPointArret)
 {
 
   int TailleMatrice = NbSommet + NbPointArret;
@@ -75,10 +74,9 @@ void RechercheArrete(int a, nombre_t ** arrete, int NbArretes, enum bool *ptrouv
 /*calcule de distance entre 2 sommets*/
 
 float CalculDistance(int a, int b, int c, int d)
-
 {
 
-  return sqrt(pow((a-c) * 1.0, 2.0) + pow((b-d) * 1.0, 2.0));
+  return (float)(sqrt(pow((a - c) * 1.0, 2.0) + pow((b - d) * 1.0, 2.0)));
 
 }
 
@@ -151,7 +149,7 @@ void RemplirMatriceDistancePhase2(nombre_t ** distance , nombre_t ** PointArret,
   
   enum bool trouver1, trouver2;
 	
-  for(i = NbSommet; i < NbSommet + NbPointArret + 1; ++i)
+  for(i = NbSommet; i < (NbSommet + NbPointArret); ++i)
     {
       
       RechercheArrete(PointArret[i - NbSommet][1].entier, arrete, NbArrete, &trouver1, &x, &y);
@@ -166,9 +164,9 @@ void RemplirMatriceDistancePhase2(nombre_t ** distance , nombre_t ** PointArret,
 	  if((trouver1) && (trouver2))
 	    {
 	      
-	      distance[i][x].reel = CalculDistance(PointArret[i][2].entier, PointArret[i][3].entier, sommet[x][1].entier, sommet[x][2].entier);
-	      
-	      distance[i][y].reel = CalculDistance(PointArret[i][2].entier, PointArret[i][3].entier,sommet[y][1].entier, sommet[y][2].entier);
+	      distance[i][x].reel = CalculDistance(PointArret[i - NbSommet][2].entier, PointArret[i - NbSommet][3].entier, sommet[x][1].entier, sommet[x][2].entier);
+
+	      distance[i][y].reel = CalculDistance(PointArret[i - NbSommet][2].entier, PointArret[i - NbSommet][3].entier,sommet[y][1].entier, sommet[y][2].entier);
 	      
 	      distance[x][i].reel = distance[i][x].reel;
 	      

@@ -2,13 +2,14 @@
 
 int main(int argc, char ** argv)
 {
+
   int NbSommet, NbArrete, NbPointArret;
   
   enum bool CodeLecture, CodeCreation;
 
   grille_t * pgrille = NULL;
   
-  nombre_t ** sommet = NULL, ** arrete = NULL, ** PointArret = NULL, ** distance = NULL;
+  nombre_t ** sommet = NULL, ** arrete = NULL, ** PointArret = NULL, ** distance = NULL, ** DistancePA = NULL;
   
   if(argc == 2)
     {
@@ -37,7 +38,19 @@ int main(int argc, char ** argv)
 
 	      RemplirMatriceDistance(&distance, sommet, NbSommet, PointArret, NbPointArret, arrete, NbArrete);
 
-	      AfficherMatrice(distance, NbSommet + NbPointArret, NbSommet + NbPointArret);
+	      AfficherMatrice2(distance, NbSommet + NbPointArret, NbSommet + NbPointArret);
+
+	      floyd(distance, NbSommet, NbPointArret);
+
+	      AfficherMatrice2(distance, NbSommet + NbPointArret, NbSommet + NbPointArret);
+
+	      DistancePA = ExtraireMatriceDistancePA(distance, NbSommet, NbPointArret);
+
+	      AfficherMatrice2(DistancePA, NbPointArret, NbPointArret);
+
+	      SequenceDistanceMin(DistancePA, PointArret, pgrille->PointArret, NbPointArret);
+
+	      AfficheSequence(pgrille, DistancePA, NbPointArret);
 
 	      LibererGrille(&pgrille);
 

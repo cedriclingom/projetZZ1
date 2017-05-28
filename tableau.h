@@ -25,7 +25,6 @@
 
 
 
-
 typedef union nombre
 {
 

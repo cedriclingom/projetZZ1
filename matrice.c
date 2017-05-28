@@ -267,6 +267,51 @@ void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 }
 
 
+
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/* AfficherMatrice2           Affiche le contenu de la matrce.                                           */
+/*                                                                                                      */
+/* En entrée             :   matrice   - Pointeur de pointeur sur un nombre.                            */
+/*                           NbLigne   - Le nombre de lignes de la matrice.                             */
+/*                           NbColonne - Le nombre de colonnes de la matrice.                           */ 
+/*                                                                                                      */
+/* En sortie             :   Rien en sortie.                                                            */
+/*                                                                                                      */
+/* Variable(s) locale(s) :   i         - Variable de boucle.                                            */
+/*                           j         - Variable de boucle.                                            */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
+void AfficherMatrice2(nombre_t ** matrice, int NbLigne, int NbColonne)
+{
+
+  int i, j;
+
+  printf(" Le contenu de la matrice est:\n");
+  
+  for(i = 0; i < NbLigne; ++i)
+    {
+
+      printf("| ");
+
+      for(j = 0; j < NbColonne; ++j)
+	{
+	  
+	  printf("%.1f ", matrice[i][j].reel);
+
+	}
+
+      printf("|\n");
+
+    }
+
+}
+
+
+
+
 /*------------------------------------------------------------------------------------------------------*/
 /*                                                                                                      */
 /* LiberationMatrice            Désalloue toute la matrice.                                             */

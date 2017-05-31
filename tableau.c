@@ -56,7 +56,7 @@ nombre_t * AllocationTableau(int taille)
 void AfficherTableau(nombre_t * tab, int taille)
 {
 
-  int i;
+  static int i;
 
   printf("Le contenu de mon tableau est:\n");
 

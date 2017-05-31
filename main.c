@@ -64,6 +64,8 @@ int main(int argc, char ** argv)
 
 	  LiberationMatrice(&distance, NbSommet + NbPointArret);
 
+	  LiberationMatrice(&DistancePA, NbPointArret);
+
 	}
       else
 	{

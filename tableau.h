@@ -30,7 +30,7 @@ typedef union nombre
 
   int entier;
 
-  float reel;
+  double reel;
 
 }nombre_t;
 

@@ -12,9 +12,17 @@
 
 
 
+#define VALEUR_MAX 100
+
+
+
+
+
 
 
 nombre_t ** AllocationMatriceDistances(int, int);
+
+void InitialiserMatriceDistance(nombre_t **, int, int);
 
 void RechercheSommet(int *, nombre_t **, int, enum bool *);
 
@@ -22,7 +30,7 @@ void RechercheArrete(int, nombre_t **, int, enum bool *, int *, int *);
 
 void RechercheCouple(int, int, nombre_t **, int, enum bool *);
 
-float CalculDistance(int, int, int, int);
+double CalculDistance(int, int, int, int);
 
 void RemplirMatriceDistancePhase1(nombre_t **, nombre_t **, nombre_t **, int, int);
 

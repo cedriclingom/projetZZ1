@@ -14,6 +14,36 @@ nombre_t ** AllocationMatriceDistances(int NbSommet, int NbPointArret)
 }
 
 
+void InitialiserMatriceDistance(nombre_t ** distance, int NbLigne, int NbColonne)
+{
+
+  int i, j;
+
+  for(i = 0; i < NbLigne; ++i)
+    {
+      for(j = 0; j < NbColonne; ++j)
+	{
+
+	  if(i != j)
+	    {
+
+	      distance[i][j].reel = VALEUR_MAX;
+
+	    }
+	  else
+	    {
+	      
+	      distance[i][j].reel = 0;
+
+	    }
+
+	}
+
+    }
+
+}
+
+
 /*recherche de sommet de grille*/
 
 void RechercheSommet(int * x, nombre_t ** sommet, int NbSommet, enum bool * ptrouver)
@@ -73,10 +103,10 @@ void RechercheArrete(int a, nombre_t ** arrete, int NbArretes, enum bool *ptrouv
 
 /*calcule de distance entre 2 sommets*/
 
-float CalculDistance(int a, int b, int c, int d)
+double CalculDistance(int a, int b, int c, int d)
 {
 
-  return (float)(sqrt(pow((a - c) * 1.0, 2.0) + pow((b - d) * 1.0, 2.0)));
+  return sqrt(pow((a - c) * 1.0, 2.0) + pow((b - d) * 1.0, 2.0));
 
 }
 
@@ -85,14 +115,20 @@ void RechercheCouple(int a, int b, nombre_t ** arrete, int NbArretes, enum bool 
 {
 
   int i = 0;
+
+  enum bool trouver = (((arrete[i][1].entier == a) && (arrete[i][2].entier == b)) || ((arrete[i][1].entier == b) && (arrete[i][2].entier == a)));
   
   *ptrouver = faux;
+
   
-  while((i < NbArretes) && ((arrete[i][1].entier != a) || (arrete[i][2].entier != b)))
+  
+  while((i < NbArretes) && !trouver)
     {
-      
+
+      trouver = (((arrete[i][1].entier == a) && (arrete[i][2].entier == b)) || ((arrete[i][1].entier == b) && (arrete[i][2].entier == a)));
+           
       ++i;
-      
+ 
     }
 
   if(i < NbArretes)
@@ -189,6 +225,8 @@ void RemplirMatriceDistance(nombre_t *** distance,nombre_t ** sommet, int NbSomm
 
   if(*distance)
     {
+
+      InitialiserMatriceDistance(*distance, NbSommet + NbPointArret, NbSommet + NbPointArret);
 
       RemplirMatriceDistancePhase1(*distance, sommet, arrete, NbSommet, NbArrete);
 

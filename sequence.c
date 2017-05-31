@@ -27,7 +27,7 @@ void SequenceDistanceMin(nombre_t ** DistancePA, nombre_t ** PointArret, nombre_
 
   int i, j, indice;
   
-  float min, dist;
+  double min, dist;
 
   min = CalculDistance(0, 0, PointArret[0][2].entier, PointArret[0][3].entier);
   
@@ -51,7 +51,7 @@ void SequenceDistanceMin(nombre_t ** DistancePA, nombre_t ** PointArret, nombre_
   
   echange(&(ListPA[0].entier), &(ListPA[indice].entier));
   
-  for(i = 0; i < NbPointArret; ++i)
+  for(i = 0; i < NbPointArret - 1; ++i)
     {
       
       for(j = i + 1; j < NbPointArret; ++j)
@@ -96,7 +96,7 @@ void AfficheSequence(grille_t * pgrille, nombre_t ** DistancePA, int NbPointArre
 
   int i;
 
-  float som = 0;
+  double som = 0;
 
   printf("La meilleur séquence est:\n");
 

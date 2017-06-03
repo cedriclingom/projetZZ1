@@ -4,7 +4,9 @@
 
 
 
-#include <math.h>
+
+
+
 #include "./grille.h"
 
 
@@ -12,8 +14,9 @@
 
 
 
-#define VALEUR_MAX 100
 
+
+#define VALEUR_MAX 100
 
 
 

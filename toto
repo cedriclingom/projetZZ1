@@ -1,0 +1,8 @@
+In file included from sequence.c:6:0:
+./sequence.h:17:22: error: unknown type name ‘grille_t’
+ void AfficheSequence(grille_t *, nombre_t **, int);
+                      ^
+sequence.c:99:22: error: unknown type name ‘grille_t’
+ void AfficheSequence(grille_t * pgrille, nombre_t ** DistancePA, int NbPointArret)
+                      ^
+make: *** [sequence.o] Error 1

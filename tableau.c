@@ -9,7 +9,8 @@
 
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
 #include "./tableau.h"
 
 
@@ -57,8 +58,6 @@ void AfficherTableau(nombre_t * tab, int taille)
 {
 
   static int i;
-
-  printf("Le contenu de mon tableau est:\n");
 
   printf("[ ");
 

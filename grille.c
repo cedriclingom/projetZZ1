@@ -11,7 +11,9 @@
 
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <assert.h>
 #include "./grille.h"
 
 
@@ -198,57 +200,54 @@ void LectureFichier(char * NomFichier, nombre_t *** sommet, nombre_t *** arrete,
   
   *PcodeLecture = vrai;                                            /*On suppose que la lecture se passera bien*/
 
-  if(f != NULL)
+  assert(f != NULL);
+      
+  *sommet = CreationEntrepot(f, NbSommet, PcodeLecture);
+  
+  if(*PcodeLecture)                                            /*si matrice entrepot est créer*/
     {
       
-      *sommet = CreationEntrepot(f, NbSommet, PcodeLecture);
+      printf("Ceci est la matrice de l'entrepot!\n");
       
-      if(*PcodeLecture)                                            /*si matrice entrepot est créer*/
+      AfficherMatrice(*sommet, *NbSommet, NBCOL);
+      
+      *arrete = CreationArrete(f, NbArretes, PcodeLecture);
+      
+      if(*PcodeLecture)                                        /*si la matrice des arretes est créer*/
 	{
-
-	  printf("Ceci est la matrice de l'entrepot!\n");
 	  
-	  AfficherMatrice(*sommet, *NbSommet, NBCOL);
+	  printf("Ceci est la matrice des arretes!\n");
 	  
-	  *arrete = CreationArrete(f, NbArretes, PcodeLecture);
+	  AfficherMatrice(*arrete, *NbArretes, NBCOL);
 	  
-	  if(*PcodeLecture)                                        /*si la matrice des arretes est créer*/
-	    {
-	      
-	       printf("Ceci est la matrice des arretes!\n");
-	       
-	       AfficherMatrice(*arrete, *NbArretes, NBCOL);
-	      
-	       *PointArret = CreationPointArret(f, NbPointArret, PcodeLecture);
-	       
-	       printf("Ceci est la matrice des points d'arrets!\n");
-	       
-	       AfficherMatrice(*PointArret, *NbPointArret, NBCOLPA);	  
-	      
-	    }
-	  else
-	    {
-	     
-	      *PcodeLecture = faux;
- 
-	      printf("Erreur de création de la matrice des arretes!\n");
-
-	    }
-
+	  *PointArret = CreationPointArret(f, NbPointArret, PcodeLecture);
+	  
+	  printf("Ceci est la matrice des points d'arrets!\n");
+	  
+	  AfficherMatrice(*PointArret, *NbPointArret, NBCOLPA);	  
+	  
 	}
       else
 	{
-
+	  
 	  *PcodeLecture = faux;
 	  
-	  printf("Erreur de création de la matrice Entrepot!\n");
+	  printf("Erreur de création de la matrice des arretes!\n");
 	  
 	}
-
-        fclose(f);
+      
+      }
+  else
+    {
+      
+      *PcodeLecture = faux;
+      
+      printf("Erreur de création de la matrice Entrepot!\n");
       
     }
-
+  
+  fclose(f);
+  
 }
 
 

@@ -5,6 +5,8 @@
 
 
 
+
+#include "./tableau.h"
 #include "./matrice.h"
 
 
@@ -14,6 +16,9 @@
 
 #define NBCOL 3
 #define NBCOLPA 4
+
+
+
 
 
 

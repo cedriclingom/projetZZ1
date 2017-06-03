@@ -13,7 +13,8 @@
 
 
 
-
+#include <stdio.h>
+#include <stdlib.h>
 #include <assert.h>
 #include "./matrice.h"
 
@@ -225,9 +226,7 @@ void FlireMatrice(nombre_t ** matrice, int NbLigne, int NbColonne, FILE * f, enu
 void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 {
 
-  int i, j;
-
-  printf(" Le contenu de la matrice est:\n");
+  static int i, j;
   
   for(i = 0; i < NbLigne; ++i)
     {
@@ -268,9 +267,7 @@ void AfficherMatrice(nombre_t ** matrice, int NbLigne, int NbColonne)
 void AfficherMatrice2(nombre_t ** matrice, int NbLigne, int NbColonne)
 {
 
-  int i, j;
-
-  printf(" Le contenu de la matrice est:\n");
+  static int i, j;
   
   for(i = 0; i < NbLigne; ++i)
     {

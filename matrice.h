@@ -20,8 +20,6 @@ enum bool{faux, vrai};
 
 
 
-
-
 nombre_t ** AllocationMatrice(int, int);
 
 void SeparateurLigne(int, int);

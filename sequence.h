@@ -1,6 +1,6 @@
 /*------------------------------------------------------------------------------------------------------*/
 /*                                                                                                      */
-/*                                              tableau.h                                               */
+/*                                              sequence.h                                              */
 /*                                                                                                      */
 /* Role  :     Déclaration des diretives de compilations, des constantes symboliques, de types et       */
 /*             des prototypes.                                                                          */

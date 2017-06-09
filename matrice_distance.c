@@ -219,7 +219,7 @@ void RechercheCouple(int a, int b, nombre_t ** arrete, int NbArretes, enum bool 
 
   int i = 0;
 
-  *ptrouver = (((arrete[i][1] == a) && (arrete[i][2] == b)) || ((arrete[i][1] == b) && (arrete[i][2] == a)));  
+  *ptrouver = faux;  
   
   while((i < NbArretes) && !ptrouver)            /*tantque je suis dans la matrice et j'ai pas trouvé le couple de sommet*/
     {
@@ -230,7 +230,7 @@ void RechercheCouple(int a, int b, nombre_t ** arrete, int NbArretes, enum bool 
  
     }
 
-  if(i < NbArretes)                              /*si j'ai trouver*/
+  if(ptrouver)                              /*si j'ai trouver*/
     {
 
       *ptrouver = vrai;

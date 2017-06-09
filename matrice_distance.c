@@ -353,15 +353,22 @@ void RemplirMatriceDistancePhase2(nombre_t ** distance , nombre_t ** PointArret,
 
 /*-------------------------------------------------------------------------------------------------*/
 /*                                                                                                 */
-/**/
+/* RemplirMatriceDistance  Permet de remplir la matrice de distance.                               */
 /*                                                                                                 */
-/* En entrée             : */
+/* En entrée             : distance     - Pointeur de pointeur sur la mtrice de distance.          */
+/*                         sommet       - Pointeur sur une de sommet de l'entrepot.                */
+/*                         arrete       - Pointeur sur une matrice d'arretes.                      */
+/*                         PointArret   - Pointeur sur une matrice de point d'arets.               */
+/*                         NbSommet     - Nombre de sommet de l'entrepot.                          */
+/*                         NbPointArret - Nombre de points d'arrets.                               */
+/*                         NbArrete     - Nombre d'arretes.                                        */
 /*                                                                                                 */
-/* En sortie             :*/
+/* En sortie             : distance     - Pointeur de pointeur sur la mtrice de distance.          */
 /*                                                                                                 */
-/* Variable(s) locale(s) :*/
+/* Variable(s) locale(s) :                Rien EN variable locale.                                 */
 /*                                                                                                 */
 /*-------------------------------------------------------------------------------------------------*/
+
 
 void RemplirMatriceDistance(nombre_t *** distance,nombre_t ** sommet, int NbSommet, nombre_t ** PointArret, int NbPointArret, nombre_t ** arrete, int NbArrete)
 {
@@ -388,20 +395,21 @@ void RemplirMatriceDistance(nombre_t *** distance,nombre_t ** sommet, int NbSomm
 }
 
 
-
-
-/*Algorithme de Floyd*/
 /*-------------------------------------------------------------------------------------------------*/
 /*                                                                                                 */
-/**/
+/* floyd                   Determine la distance minimal entre chaque pairs de sommets de la       */
+/*                         matrice de distance.                                                    */
 /*                                                                                                 */
-/* En entrée             : */
+/* En entrée             : distance     - Pointeur sur la mtrice de distance.                      */
+/*                         NbSommet     - Nombre de sommet de l'entrepot.                          */
+/*                         NbPointArret - Nombre de point d'arrets.                                */
 /*                                                                                                 */
-/* En sortie             :*/
+/* En sortie             : distance     - Pointeur sur la mtrice de distance.                      */
 /*                                                                                                 */
-/* Variable(s) locale(s) :*/
+/* Variable(s) locale(s) : i, j, k      - Variable de boucle.                                      */
 /*                                                                                                 */
 /*-------------------------------------------------------------------------------------------------*/
+
 
 void floyd(nombre_t ** distance, int NbSommet, int NbPointArret)
 {
@@ -433,42 +441,45 @@ void floyd(nombre_t ** distance, int NbSommet, int NbPointArret)
 }
 
 
-
-
-/*création de la matrice de distance juste entre les points d'arrets et le debut*/
 /*-------------------------------------------------------------------------------------------------*/
 /*                                                                                                 */
-/**/
+/* ExtraireMatriceDistancePA   Extrait la matrice distance juste entre les points d'arrets.        */
 /*                                                                                                 */
-/* En entrée             : */
+/* En entrée             : distance     - Pointeur sur la mtrice de distance.                      */
+/*                         NbSommet     - Nombre de sommet de l'entrepot.                          */
+/*                         NbPointArret - Nombre de point d'arrets.                                */
 /*                                                                                                 */
-/* En sortie             :*/
+/* En sortie             : DistancePA   - Retourner un pointeur sur la matrice de distance entre   */
+/*                                        les points d'arrets.                                     */
 /*                                                                                                 */
-/* Variable(s) locale(s) :*/
+/* Variable(s) locale(s) : i, j         - Variable de boucle.                                      */
+/*                         DistancePA   - Retourner un pointeur sur la matrice de distance entre   */
+/*                                        les points d'arrets.                                     */
 /*                                                                                                 */
 /*-------------------------------------------------------------------------------------------------*/
+
 
 nombre_t **  ExtraireMatriceDistancePA(nombre_t ** distance, int NbSommet, int NbPointArret)
 {
 
-  int i, j, dimension;
+  int i, j;
 
   nombre_t ** DistancePA = AllocationMatrice(NbPointArret, NbPointArret);
 
   if(DistancePA)
     {
 
-      dimension = NbSommet + NbPointArret;
+      InitialiserMatriceDistance(DistancePA, NbPointArret, NbPointArret);
 
-      for(i = NbSommet; i < dimension; ++i)
+      for(i = 0; i < NbPointArret; ++i)
 	{
 
-	  for(j = i + 1; j < dimension; ++j)
+	  for(j = i + 1; j < NbPointArret; ++j)
 	    {
 	      
-	      DistancePA[i - NbSommet][j - NbSommet] = distance[i][j];
+	      DistancePA[i][j] = distance[i + NbSommet][j + NbSommet];
 
-	      DistancePA[j - NbSommet][i - NbSommet] = DistancePA[i - NbSommet][j - NbSommet];
+	      DistancePA[j][i] = DistancePA[i][j];
 
 	    }
 

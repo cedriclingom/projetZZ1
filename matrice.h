@@ -1,3 +1,13 @@
+/*------------------------------------------------------------------------------------------------------*/
+/*                                                                                                      */
+/*                                                matrice.h                                             */
+/*                                                                                                      */
+/* Role  :     Déclaration des diretives de compilations, des constantes symboliques, de types et       */
+/*             des prototypes.                                                                          */
+/*                                                                                                      */
+/*------------------------------------------------------------------------------------------------------*/
+
+
 #ifndef GESTION_ENTREPOT_MATRICE_H
 #define GESTION_ENTREPOT_MATRICE_H
 

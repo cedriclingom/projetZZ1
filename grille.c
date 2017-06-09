@@ -1,6 +1,6 @@
 /*-------------------------------------------------------------------------------------------------*/
 /*                                                                                                 */
-/*                                 grille.c                                                        */
+/*                                         grille.c                                                */
 /*                                                                                                 */
 /* Role : Définitions des fonctions et procédures permettant la création de                        */
 /*        l'entrepot et des point d'arrets.                                                        */

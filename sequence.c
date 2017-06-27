@@ -105,10 +105,10 @@ void SequenceDistanceMin(nombre_t ** DistancePA, nombre_t ** PointArret, nombre_
       for(j = i + 1; j < NbPointArret; ++j)
 	{
 	  
-	  if(j - i == 1)
+	  if(j - i == 1)                                             /* si le point d'arret courant est juste après celui avec lequel on veux calculé la distance*/
 	    {
 	      
-	      min = DistancePA[ListPA[i]][ListPA[j]];
+	      min = DistancePA[ListPA[i]][ListPA[j]] + CalculDistance(0, 0, PointArret[j][2], PointArret[j][3]); /* calcule la distance entre le point d'arret courant j et point d'arret i mais aussi la distance entre le point d'arret j et le debut */
 	      
 	      indice = j;
 	      
@@ -116,7 +116,7 @@ void SequenceDistanceMin(nombre_t ** DistancePA, nombre_t ** PointArret, nombre_
 	  else
 	    {
 	      
-	      dist = DistancePA[ListPA[i]][ListPA[j]];
+	      dist = DistancePA[ListPA[i]][ListPA[j]] + CalculDistance(0, 0, PointArret[j][2], PointArret[j][3]); /* calcule la distance entre le point d'arret courant j et point d'arret i mais aussi la distance entre le point d'arret j et le debut */
 	      
 	      if(dist < min)
 		{

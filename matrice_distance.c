@@ -95,19 +95,18 @@ void InitialiserMatriceDistance(nombre_t ** distance, int NbLigne, int NbColonne
 
 void RechercheSommet(int * x, nombre_t ** sommet, int NbSommet, enum bool * ptrouver)
 {
-
   int i = 0;
 
   *ptrouver = faux;
   
-  while((i < (NbSommet-1)) && (sommet[i][0] != *x))    /*tantque je suis dans la matrice et j'ai pas trouver le sommet*/
+  while((i < (NbSommet)) && (sommet[i][0] != *x))    /*tantque je suis dans la matrice et j'ai pas trouver le sommet*/
     {
       
       ++i;
 
     }
 
-  if(i < (NbSommet -1))                               /*si le sommet existe*/ 
+  if(i < (NbSommet))                               /*si le sommet existe*/ 
     {
 
       *ptrouver = vrai;
